@@ -1,0 +1,19 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [
+		"src",
+	],
+	"exclude": [
+		"test"
+	],
+	"compilerOptions": {
+		// output type and sourcemap files
+		"declaration": true,
+		"sourceMap": false,
+
+		// strip ./src
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"noEmit": false,
+	}
+}

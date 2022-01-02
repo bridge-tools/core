@@ -1,0 +1,34 @@
+{
+	"name": "@bridge-tools/core",
+	"version": "0.0.1",
+	"description": "The core bridge components for the @bridge-tools repos. Includes basic types and functions for general bridge use.",
+	"author": "Aaron Hutton",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"directories": {
+		"test": "test"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc -p ./tsconfig-build.json",
+		"watch": "tsc --watch -p ./tsconfig-build.json",
+		"lint": "eslint src test",
+		"test": "jest",
+		"test-c": "jest --coverage",
+		"test-watch": "jest --watch",
+		"test-watch-c": "jest --watch --coverage"
+	},
+	"keywords": [
+		"javascript",
+		"typescript",
+		"bridge",
+		"bridge-tools",
+		"open-source"
+	],
+	"devDependencies": {
+		"@bridge-tools/config": ">=0.1.0"
+	},
+	"prettier": "@bridge-tools/config/prettier.json"
+}

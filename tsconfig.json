@@ -1,0 +1,9 @@
+{
+	"extends": "@bridge-tools/config/tsconfig.json",
+	"include": [
+		"src",
+		"test",
+		"jest.config.js",
+		".eslintrc.js"
+	],
+}
