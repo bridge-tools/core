@@ -13,6 +13,7 @@
 		"LICENSE"
 	],
 	"scripts": {
+		"version": "rm -rf dist && npm run build",
 		"build": "tsc -p ./tsconfig-build.json",
 		"watch": "tsc --watch -p ./tsconfig-build.json",
 		"lint": "eslint src test",
