@@ -25,6 +25,6 @@ jobs:
     - uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        threshold: 99
+        annotations: none
     - run: npm run lint
     - run: npm run build
