@@ -63,23 +63,26 @@ function swapFavourableAdverseVulnerability(
 	}
 }
 /**
- * Calculates the vulnerability of the board from the position of the specified player
- * @param direction Position of player
+ * Calculates the vulnerability of the board from NS perspective
  * @param boardNumber Number of board
  * @returns Vulnerability of player on the specified board
  */
 export function calculateBoardVulnerability(
-	direction: Compass,
 	boardNumber: number
 ): Vulnerability {
 	const board = boardNumber % 16;
-	let vul = boardVul[board];
-
-	if (
-		(direction === Compass.East || direction === Compass.West) &&
-		(vul === Vulnerability.NvV || vul === Vulnerability.VNv)
-	) {
-		vul = swapFavourableAdverseVulnerability(vul);
-	}
-	return vul;
+	return boardVul[board];
+}
+/**
+ * Checks if player is vulnerable or not on the board
+ * @param boardNumber Number of board
+ * @param direction Position of player
+ * @returns Boolean whether player is vulnerable or not
+ */
+export function isPlayerVulnerable(
+	boardNumber: number,
+	direction: Compass
+): boolean {
+	const vul = calculateBoardVulnerability(boardNumber);
+	return isDirectionVulnerable(direction, vul);
 }
