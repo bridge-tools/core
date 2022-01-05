@@ -1,6 +1,6 @@
 node_modules
 dist
 coverage
-
+**/*.log
 # Intentionally ignoring the package-lock as this should work without fixed packages
 package-lock.json
