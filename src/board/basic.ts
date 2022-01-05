@@ -1,5 +1,4 @@
 import { Compass, Vulnerability } from '../types';
-import { calculateBoardVulnerability } from './calculate-board-vulnerability';
 import { positiveModulo } from '../utils/mod';
 import { invert } from '../utils/object';
 
@@ -48,18 +47,4 @@ export function isDirectionVulnerable(
 		vulnerability === Vulnerability.NvV ||
 		vulnerability === Vulnerability.VV
 	);
-}
-
-/**
- * Checks if player is vulnerable or not on the board
- * @param boardNumber Number of board
- * @param direction Position of player
- * @returns Boolean whether player is vulnerable or not
- */
-export function isPlayerVulnerable(
-	boardNumber: number,
-	direction: Compass
-): boolean {
-	const vul = calculateBoardVulnerability(boardNumber);
-	return isDirectionVulnerable(direction, vul);
 }
