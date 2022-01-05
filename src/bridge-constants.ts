@@ -9,3 +9,5 @@ export const BIDS_PER_LEVEL = 5;
 export const CONTRACT_BOOK = 6;
 
 export const CARDS_IN_TRICK = 4;
+
+export const VULNERABILITIES = 16;
