@@ -22,8 +22,9 @@ jobs:
         node-version: '16'
         cache: 'npm'
     - run: npm ci
-    - uses: ziishaned/jest-reporter-action@v0.0.1
+    - uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        annotations: none
     - run: npm run lint
     - run: npm run build
