@@ -1,6 +1,7 @@
 export * from './bid';
 export * from './board';
 export * from './board-result';
+export * from './board-vulnerability';
 export * from './card';
 export * from './compass';
 export * from './contract';

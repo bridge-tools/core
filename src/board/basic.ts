@@ -1,4 +1,4 @@
-import { Compass, Vulnerability } from '../types';
+import { Compass, Vulnerability, boardVul } from '../types';
 import { positiveModulo } from '../utils/mod';
 import { invert } from '../utils/object';
 
@@ -47,4 +47,39 @@ export function isDirectionVulnerable(
 		vulnerability === Vulnerability.NvV ||
 		vulnerability === Vulnerability.VV
 	);
+}
+/**
+ * Swaps favourable and adverse vulnerability as needed by compass direction
+ * @param vulnerability NvV or VNv vulnerability
+ * @returns Swapped vulnerability
+ */
+function swapFavourableAdverseVulnerability(
+	vulnerability: Vulnerability
+): Vulnerability {
+	if (vulnerability === Vulnerability.NvV) {
+		return Vulnerability.VNv;
+	} else if (vulnerability === Vulnerability.VNv) {
+		return Vulnerability.NvV;
+	}
+}
+/**
+ * Calculates the vulnerability of the board from the position of the specified player
+ * @param direction Position of player
+ * @param boardNumber Number of board
+ * @returns Vulnerability of player on the specified board
+ */
+export function calculateBoardVulnerability(
+	direction: Compass,
+	boardNumber: number
+): Vulnerability {
+	const board = boardNumber % 16;
+	let vul = boardVul[board];
+
+	if (
+		(direction === Compass.East || direction === Compass.West) &&
+		(vul === Vulnerability.NvV || vul === Vulnerability.VNv)
+	) {
+		vul = swapFavourableAdverseVulnerability(vul);
+	}
+	return vul;
 }
