@@ -1,6 +1,6 @@
 {
 	"name": "@bridge-tools/core",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "The core bridge components for the @bridge-tools repos. Includes basic types and functions for general bridge use.",
 	"author": "bridge-tools",
 	"license": "MIT",
