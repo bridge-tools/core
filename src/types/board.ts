@@ -6,6 +6,11 @@ import { Contract } from './contract';
 import { Deal } from './deal';
 import { Vulnerability } from './vulnerability';
 
+export interface Player {
+	name?: string;
+	id?: string;
+}
+
 export interface BasicBoard {
 	deal: Deal;
 
@@ -23,6 +28,11 @@ export interface FullBoard extends BasicBoard {
 	trick: Trick;
 	play: Trick[];
 	claimedTricks?: number;
+
+	tricksNS: number;
+	tricksEW: number;
+
+	players: Partial<Record<Compass, Player>>;
 
 	result: BoardResult;
 }
