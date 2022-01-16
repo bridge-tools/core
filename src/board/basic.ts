@@ -30,6 +30,16 @@ export function isNorthSouth(direction: Compass): boolean {
 }
 
 /**
+ * Check if the two compass directions are both N/S or both E/W
+ */
+export function isSamePair(d1: Compass, d2: Compass): boolean {
+	const bothNS = isNorthSouth(d1) && isNorthSouth(d2);
+	const bothEW = !isNorthSouth(d1) && !isNorthSouth(d2);
+
+	return bothNS || bothEW;
+}
+
+/**
  * Check if a given direction is vulnerable on a board
  */
 export function isDirectionVulnerable(
