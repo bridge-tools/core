@@ -10,4 +10,6 @@ export const CONTRACT_BOOK = 6;
 
 export const CARDS_IN_TRICK = 4;
 
+export const COMPASS_DIRECTIONS = 4;
+
 export const VULNERABILITIES = 16;
