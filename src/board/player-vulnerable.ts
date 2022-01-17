@@ -1,4 +1,4 @@
-import { calculateBoardVulnerability, isDirectionVulnerable } from '.';
+import { calculateVulnerability, isDirectionVulnerable } from '.';
 import { Compass } from '../types';
 /**
  * Checks if player is vulnerable or not on the board
@@ -10,6 +10,6 @@ export function isPlayerVulnerableOnBoard(
 	boardNumber: number,
 	direction: Compass
 ): boolean {
-	const vul = calculateBoardVulnerability(boardNumber);
+	const vul = calculateVulnerability(boardNumber);
 	return isDirectionVulnerable(direction, vul);
 }

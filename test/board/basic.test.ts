@@ -38,6 +38,26 @@ describe('Testing Board.isNorthSouth', () => {
 	});
 });
 
+describe('Testing Board.isSamePair', () => {
+	it('NS', () => {
+		expect(
+			Board.isSamePair(Types.Compass.North, Types.Compass.South)
+		).toBeTruthy();
+	});
+
+	it('EW', () => {
+		expect(
+			Board.isSamePair(Types.Compass.East, Types.Compass.West)
+		).toBeTruthy();
+	});
+
+	it('NE', () => {
+		expect(
+			Board.isSamePair(Types.Compass.North, Types.Compass.East)
+		).toBeFalsy();
+	});
+});
+
 describe('Testing Board.isDirectionVulnerable', () => {
 	it('Testing Love all', () => {
 		expect(
