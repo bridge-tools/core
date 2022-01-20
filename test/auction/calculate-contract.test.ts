@@ -107,4 +107,24 @@ describe('Testing Auction.calculateContract', () => {
 			strain: Types.Suit.Club,
 		});
 	});
+
+	it('Testing a double earlier in the auction does not cause the result to be doubled', () => {
+		expect(
+			Auction.calculateContract(
+				[
+					{ call: { level: 1, suit: Types.Suit.Club } },
+					{ call: PossibleCalls.Double },
+					{ call: { level: 2, suit: Types.Suit.Club } },
+					{ call: PossibleCalls.Pass },
+					{ call: PossibleCalls.Pass },
+					{ call: PossibleCalls.Pass },
+				],
+				Types.Compass.North
+			)
+		).toStrictEqual({
+			declarer: Compass.North,
+			level: 2,
+			strain: Types.Suit.Club,
+		});
+	});
 });

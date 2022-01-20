@@ -38,6 +38,8 @@ export function calculateContract(
 		} else if (call === PossibleCalls.Redouble) {
 			redoubled = true;
 			break;
+		} else if (isBid(call)) {
+			break;
 		}
 	}
 
