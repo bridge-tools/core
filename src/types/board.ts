@@ -25,6 +25,7 @@ export interface FullBoard extends BasicBoard {
 	auction: AuctionCall[];
 
 	contract: Contract;
+	remainingCards: Deal;
 	trick: Trick;
 	play: Trick[];
 	claimedTricks?: number;
