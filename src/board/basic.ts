@@ -23,6 +23,16 @@ export function rotateAnticlockwise(initial: Compass, steps: number): Compass {
 }
 
 /**
+ * Count the number of steps clockwise from one compass direction to another
+ */
+export function countClockwiseSteps(initial: Compass, end: Compass): number {
+	const initialNumber = COMPASS_TO_NUMBER[initial];
+	const endNumber = COMPASS_TO_NUMBER[end];
+
+	return positiveModulo(endNumber - initialNumber, 4);
+}
+
+/**
  * Check if this is N/S or E/W
  */
 export function isNorthSouth(direction: Compass): boolean {

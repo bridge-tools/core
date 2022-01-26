@@ -29,6 +29,26 @@ describe('Testing Board.rotateAnticlockwise', () => {
 	});
 });
 
+describe('Testing Board.countClockwiseSteps', () => {
+	it('Check N -> S', () => {
+		expect(
+			Board.countClockwiseSteps(Types.Compass.North, Types.Compass.South)
+		).toBe(2);
+	});
+
+	it('Check S -> N', () => {
+		expect(
+			Board.countClockwiseSteps(Types.Compass.South, Types.Compass.North)
+		).toBe(2);
+	});
+
+	it('Check N -> N', () => {
+		expect(
+			Board.countClockwiseSteps(Types.Compass.North, Types.Compass.North)
+		).toBe(0);
+	});
+});
+
 describe('Testing Board.isNorthSouth', () => {
 	it('Test', () => {
 		expect(Board.isNorthSouth(Types.Compass.North)).toBeTruthy();
