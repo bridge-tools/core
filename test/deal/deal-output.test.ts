@@ -1,39 +1,39 @@
-import { StringParser } from '../../src';
-import { calculateWestEastTabSpacing, writeDealasString } from '../../src/deal';
-import { filterbySuit } from '../../src/hand';
-import { stringifyRanks } from '../../src/string-parser';
+import { StringParser, Deal, Hand } from '../../src';
 import { Suit } from '../../src/types';
 
 describe('Testing tab spacing between West East suits', () => {
 	it('Testing suit shorter than doubleton', () => {
-		const shortspades = stringifyRanks(
-			filterbySuit(StringParser.parseHand('2...', true), Suit.Spade).map(
-				(card) => card.rank
-			)
+		const shortspades = StringParser.stringifyRanks(
+			Hand.filterbySuit(
+				StringParser.parseHand('2...', true),
+				Suit.Spade
+			).map((card) => card.rank)
 		);
-		expect(calculateWestEastTabSpacing(shortspades)).toStrictEqual(
+		expect(Deal.calculateWestEastTabSpacing(shortspades)).toStrictEqual(
 			'\t\t\t\t\t\t'
 		);
 	});
 	it('Testing suit longer than 9', () => {
-		const longspades = stringifyRanks(
-			filterbySuit(
+		const longspades = StringParser.stringifyRanks(
+			Hand.filterbySuit(
 				StringParser.parseHand('AKQJT65432...', true),
 				Suit.Spade
 			).map((card) => card.rank)
 		);
-		expect(calculateWestEastTabSpacing(longspades)).toStrictEqual(
+		expect(Deal.calculateWestEastTabSpacing(longspades)).toStrictEqual(
 			'\t\t\t\t'
 		);
 	});
 	it('Testing suit length between 2 and 8', () => {
-		const spades = stringifyRanks(
-			filterbySuit(
+		const spades = StringParser.stringifyRanks(
+			Hand.filterbySuit(
 				StringParser.parseHand('KQJ652...', true),
 				Suit.Spade
 			).map((card) => card.rank)
 		);
-		expect(calculateWestEastTabSpacing(spades)).toStrictEqual('\t\t\t\t\t');
+		expect(Deal.calculateWestEastTabSpacing(spades)).toStrictEqual(
+			'\t\t\t\t\t'
+		);
 	});
 });
 
@@ -84,6 +84,6 @@ const handSouth =
 describe('Testing converting deal to string', () => {
 	it('Test deal string output', () => {
 		const dealString = handNorth + handsWestEast + handSouth;
-		expect(writeDealasString(deal)).toStrictEqual(dealString);
+		expect(Deal.writeDealasString(deal)).toStrictEqual(dealString);
 	});
 });
