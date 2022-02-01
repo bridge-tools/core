@@ -7,7 +7,7 @@ import { stringifyRanks } from '../string-parser';
  * @param suitstr String of a suit
  * @returns String of tab characters to put into the deal output
  */
-function calculateWestEastTabSpacing(suitstr: string): string {
+export function calculateWestEastTabSpacing(suitstr: string): string {
 	if (suitstr.length < 2) {
 		return '\t\t\t\t\t\t';
 	} else if (suitstr.length > 9) {

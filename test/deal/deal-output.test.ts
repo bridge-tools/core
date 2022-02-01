@@ -1,5 +1,41 @@
 import { StringParser } from '../../src';
-import { writeDealasString } from '../../src/deal';
+import { calculateWestEastTabSpacing, writeDealasString } from '../../src/deal';
+import { filterbySuit } from '../../src/hand';
+import { stringifyRanks } from '../../src/string-parser';
+import { Suit } from '../../src/types';
+
+describe('Testing tab spacing between West East suits', () => {
+	it('Testing suit shorter than doubleton', () => {
+		const shortspades = stringifyRanks(
+			filterbySuit(StringParser.parseHand('2...', true), Suit.Spade).map(
+				(card) => card.rank
+			)
+		);
+		expect(calculateWestEastTabSpacing(shortspades)).toStrictEqual(
+			'\t\t\t\t\t\t'
+		);
+	});
+	it('Testing suit longer than 9', () => {
+		const longspades = stringifyRanks(
+			filterbySuit(
+				StringParser.parseHand('AKQJT65432...', true),
+				Suit.Spade
+			).map((card) => card.rank)
+		);
+		expect(calculateWestEastTabSpacing(longspades)).toStrictEqual(
+			'\t\t\t\t'
+		);
+	});
+	it('Testing suit length between 2 and 8', () => {
+		const spades = stringifyRanks(
+			filterbySuit(
+				StringParser.parseHand('KQJ652...', true),
+				Suit.Spade
+			).map((card) => card.rank)
+		);
+		expect(calculateWestEastTabSpacing(spades)).toStrictEqual('\t\t\t\t\t');
+	});
+});
 
 const north = StringParser.parseHand('KJ96.Q7.964.9874');
 const west = StringParser.parseHand('T5.AJT8.KJT87.65');
