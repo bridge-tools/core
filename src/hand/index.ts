@@ -6,4 +6,5 @@ export * from './count-suit';
 export * from './distribution';
 export * from './exact-distribution';
 export * from './remove-card';
+export * from './filter-suit';
 export * from './sort';
