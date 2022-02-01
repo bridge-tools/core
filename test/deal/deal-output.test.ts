@@ -7,6 +7,7 @@ const east = StringParser.parseHand('743.K532.53.AKQ3');
 const south = StringParser.parseHand('AQ82.964.AQ2.JT2');
 
 const deal = { N: north, E: east, S: south, W: west };
+
 const handNorth =
 	'\t\t\t' +
 	'KJ96' +
@@ -47,8 +48,6 @@ const handSouth =
 describe('Testing converting deal to string', () => {
 	it('Test deal string output', () => {
 		const dealString = handNorth + handsWestEast + handSouth;
-		console.log('deal\n', writeDealasString(deal));
-		console.log('comparison deal\n', dealString);
 		expect(writeDealasString(deal)).toStrictEqual(dealString);
 	});
 });

@@ -3,6 +3,22 @@ import { filterbySuit } from '../hand';
 import { stringifyRanks } from '../string-parser';
 
 /**
+ * Calculates the required tab spacing between West and East hands to make all the suits align correctly
+ * @param suitstr String of a suit
+ * @returns String of tab characters to put into the deal output
+ */
+function calculateWestEastTabSpacing(suitstr: string): string {
+	if (suitstr.length < 2) {
+		return '\t\t\t\t\t\t';
+	} else if (suitstr.length > 9) {
+		return '\t\t\t\t';
+	} else {
+		return '\t\t\t\t\t';
+	}
+}
+
+/**
+ * Writes a deal object as a string which can be printed.
  * @param deal Deal to be written as a string
  * @returns String object containing deal
  */
@@ -72,19 +88,19 @@ export function writeDealasString(deal: Deal): string {
 		'\n';
 	const handsWestEast =
 		spadesWest +
-		'\t\t\t\t\t' +
+		calculateWestEastTabSpacing(spadesWest) +
 		spadesEast +
 		'\n' +
 		heartsWest +
-		'\t\t\t\t\t' +
+		calculateWestEastTabSpacing(heartsWest) +
 		heartsEast +
 		'\n' +
 		diamondsWest +
-		'\t\t\t\t\t' +
+		calculateWestEastTabSpacing(diamondsWest) +
 		diamondsEast +
 		'\n' +
 		clubsWest +
-		'\t\t\t\t\t' +
+		calculateWestEastTabSpacing(clubsWest) +
 		clubsEast +
 		'\n\t\t\t';
 	const handSouth =
