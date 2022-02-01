@@ -22,15 +22,15 @@ export function calculateWestEastTabSpacing(suitstr: string): string {
  * @returns String object containing deal
  */
 export function writeDealasString(deal: Deal): string {
-	const north = formatHandasLines(deal.N).map((suit) => '\t\t\t' + suit);
-	const south = formatHandasLines(deal.S).map((suit) => '\t\t\t' + suit);
-	const west = formatHandasLines(deal.W).map(
-		(suit) => suit + calculateWestEastTabSpacing(suit)
-	);
+	const north = formatHandasLines(deal.N).map((line) => '\t\t\t' + line);
+	const south = formatHandasLines(deal.S).map((line) => '\t\t\t' + line);
+	const west = formatHandasLines(deal.W);
 	const east = formatHandasLines(deal.E);
 	const handsWestEast = [];
 	for (let i = 0; i < 4; i++) {
-		handsWestEast.push(west[i] + east[i]);
+		handsWestEast.push(
+			west[i] + calculateWestEastTabSpacing(west[i]) + east[i]
+		);
 	}
 	const dealString = [...north, ...handsWestEast, ...south];
 	return dealString.join('\n');
