@@ -1,89 +1,52 @@
-import { StringParser, Deal, Hand } from '../../src';
-import { Suit } from '../../src/types';
+import { StringParser, Deal } from '../../src';
 
-describe('Testing tab spacing between West East suits', () => {
-	it('Testing suit shorter than doubleton', () => {
-		const shortspades = StringParser.stringifyRanks(
-			Hand.filterbySuit(
-				StringParser.parseHand('2...', true),
-				Suit.Spade
-			).map((card) => card.rank)
-		);
-		expect(Deal.calculateWestEastTabSpacing(shortspades)).toStrictEqual(
-			'\t\t\t\t\t\t'
-		);
-	});
-	it('Testing suit longer than 9', () => {
-		const longspades = StringParser.stringifyRanks(
-			Hand.filterbySuit(
-				StringParser.parseHand('AKQJT65432...', true),
-				Suit.Spade
-			).map((card) => card.rank)
-		);
-		expect(Deal.calculateWestEastTabSpacing(longspades)).toStrictEqual(
-			'\t\t\t\t'
-		);
-	});
-	it('Testing suit length between 2 and 8', () => {
-		const spades = StringParser.stringifyRanks(
-			Hand.filterbySuit(
-				StringParser.parseHand('KQJ652...', true),
-				Suit.Spade
-			).map((card) => card.rank)
-		);
-		expect(Deal.calculateWestEastTabSpacing(spades)).toStrictEqual(
-			'\t\t\t\t\t'
-		);
-	});
-});
-
-const north = StringParser.parseHand('KJ96.Q7.964.9874');
-const west = StringParser.parseHand('T5.AJT8.KJT87.65');
-const east = StringParser.parseHand('743.K532.53.AKQ3');
-const south = StringParser.parseHand('AQ82.964.AQ2.JT2');
+const north = StringParser.parseHand('9.AT97.KQJ86.543');
+const west = StringParser.parseHand('AKQJT65432.KQJ..');
+const east = StringParser.parseHand('8.6543.AT94.T986');
+const south = StringParser.parseHand('7.82.7532.AKQJ72');
 
 const deal = { N: north, E: east, S: south, W: west };
 
 const handNorth =
 	'\t\t\t' +
-	'KJ96' +
+	'9' +
 	'\n\t\t\t' +
-	'Q7' +
+	'AT97' +
 	'\n\t\t\t' +
-	'964' +
+	'KQJ86' +
 	'\n\t\t\t' +
-	'9874' +
+	'543' +
 	'\n';
 const handsWestEast =
-	'T5' +
-	'\t\t\t\t\t' +
-	'743' +
+	'AKQJT65432' +
+	'\t\t\t\t' +
+	'8' +
 	'\n' +
-	'AJT8' +
+	'KQJ' +
 	'\t\t\t\t\t' +
-	'K532' +
+	'6543' +
 	'\n' +
-	'KJT87' +
-	'\t\t\t\t\t' +
-	'53' +
+	'' +
+	'\t\t\t\t\t\t' +
+	'AT94' +
 	'\n' +
-	'65' +
-	'\t\t\t\t\t' +
-	'AKQ3' +
+	'' +
+	'\t\t\t\t\t\t' +
+	'T986' +
 	'\n';
 const handSouth =
 	'\t\t\t' +
-	'AQ82' +
+	'7' +
 	'\n\t\t\t' +
-	'964' +
+	'82' +
 	'\n\t\t\t' +
-	'AQ2' +
+	'7532' +
 	'\n\t\t\t' +
-	'JT2';
+	'AKQJ72';
 
-describe('Testing converting deal to string', () => {
-	it('Test deal string output', () => {
+describe('Testing Deal.writeDealAsString', () => {
+	it('Test deal string output, West has all long, medium and short length suits', () => {
 		const dealString = handNorth + handsWestEast + handSouth;
-		expect(Deal.writeDealasString(deal)).toStrictEqual(dealString);
+		expect(Deal.writeDealAsString(deal)).toStrictEqual(dealString);
 	});
 });
