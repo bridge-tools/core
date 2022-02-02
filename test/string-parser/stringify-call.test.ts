@@ -3,26 +3,30 @@ import { PossibleCalls } from '../../src/types';
 
 describe('Testing stringifyCall', () => {
 	it('Testing pass', () => {
-		expect(StringParser.stringifyCall(PossibleCalls.Pass)).toStrictEqual(
-			'P'
-		);
+		expect(
+			StringParser.stringifyCall({ call: PossibleCalls.Pass })
+		).toStrictEqual('P');
 	});
 	it('Testing double', () => {
-		expect(StringParser.stringifyCall(PossibleCalls.Double)).toStrictEqual(
-			'X'
-		);
+		expect(
+			StringParser.stringifyCall({ call: PossibleCalls.Double })
+		).toStrictEqual('X');
 	});
 	it('Testing Redouble', () => {
 		expect(
-			StringParser.stringifyCall(PossibleCalls.Redouble)
+			StringParser.stringifyCall({ call: PossibleCalls.Redouble })
 		).toStrictEqual('XX');
 	});
 	it('Testing bids', () => {
 		expect(
-			StringParser.stringifyCall({ level: 1, suit: Types.NoTrump })
+			StringParser.stringifyCall({
+				call: { level: 1, suit: Types.NoTrump },
+			})
 		).toStrictEqual('1NT');
 		expect(
-			StringParser.stringifyCall({ level: 4, suit: Types.Suit.Spade })
+			StringParser.stringifyCall({
+				call: { level: 4, suit: Types.Suit.Spade },
+			})
 		).toStrictEqual('4S');
 	});
 });

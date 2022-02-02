@@ -1,5 +1,11 @@
 import { stringifySuit } from '.';
-import { Call, NoTrump, NoTrumpType, PossibleCalls, Suit } from '../types';
+import {
+	AuctionCall,
+	NoTrump,
+	NoTrumpType,
+	PossibleCalls,
+	Suit,
+} from '../types';
 
 /**
  * Converts the strain of a bid to a string
@@ -14,8 +20,8 @@ function stringifyStrain(strain: Suit | NoTrumpType): string {
  * @param bid Either a bid or possible call
  * @returns String representation of the call
  */
-export function stringifyCall(bid: Call): string {
-	switch (bid) {
+export function stringifyCall(bid: AuctionCall): string {
+	switch (bid.call) {
 		case PossibleCalls.Pass: {
 			return 'P';
 		}
@@ -26,7 +32,7 @@ export function stringifyCall(bid: Call): string {
 			return 'XX';
 		}
 		default: {
-			return bid.level.toString() + stringifyStrain(bid.suit);
+			return bid.call.level.toString() + stringifyStrain(bid.call.suit);
 		}
 	}
 }
