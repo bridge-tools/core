@@ -36,7 +36,7 @@ const listUncontestedAuction = [
 	{ call: { level: 3, suit: Types.Suit.Club } },
 	{ call: { level: 3, suit: Types.NoTrump } },
 ];
-describe('Testing stringifyAuction', () => {
+describe('Testing StringParser.stringifyAuction', () => {
 	it('Testing contested auction', () => {
 		expect(stringifyAuction(listContestedAuction)).toStrictEqual(
 			stringContestedAuction

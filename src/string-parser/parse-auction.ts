@@ -7,11 +7,7 @@ import { AuctionCall } from '../types';
  */
 function parseContestedAuction(auction: string): AuctionCall[] {
 	const calls = auction.split('-');
-	const bids = [];
-	for (const call of calls) {
-		bids.push(parseCall(call));
-	}
-	return bids;
+	return calls.map((call) => parseCall(call));
 }
 /**
  * Converts an uncontested auction into a full contested auction.
@@ -19,7 +15,8 @@ function parseContestedAuction(auction: string): AuctionCall[] {
  * @returns List of AuctionCalls representing the auction
  */
 function parseUncontestedAuction(auction: string): AuctionCall[] {
-	const contestedAuction = auction.replaceAll('-', '-P-');
+	let contestedAuction = auction.replaceAll('-', '-P-');
+	contestedAuction += '-P';
 	return parseContestedAuction(contestedAuction);
 }
 /**

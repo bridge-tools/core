@@ -1,7 +1,7 @@
 import { StringParser, Types } from '../../src';
 import { PossibleCalls } from '../../src/types';
 
-describe('Testing parseCall', () => {
+describe('Testing StringParser.parseCall', () => {
 	it('Testing a bid', () => {
 		expect(StringParser.parseCall('1S')).toStrictEqual({
 			call: { level: 1, suit: Types.Suit.Spade },

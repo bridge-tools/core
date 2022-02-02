@@ -1,7 +1,7 @@
 import { StringParser, Types } from '../../src';
 import { PossibleCalls } from '../../src/types';
 
-describe('Testing stringifyCall', () => {
+describe('Testing StringParser.stringifyCall', () => {
 	it('Testing pass', () => {
 		expect(
 			StringParser.stringifyCall({ call: PossibleCalls.Pass })

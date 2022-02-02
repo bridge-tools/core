@@ -6,10 +6,7 @@ import { AuctionCall } from '../types';
  * @returns String representation of auction
  */
 function stringifyContestedAuction(auction: AuctionCall[]): string {
-	const stringAuction = [];
-	for (const call of auction) {
-		stringAuction.push(stringifyCall(call));
-	}
+	const stringAuction = auction.map((call) => stringifyCall(call));
 	return stringAuction.join('-');
 }
 /**
