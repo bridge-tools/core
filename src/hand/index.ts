@@ -5,5 +5,7 @@ export * from './count-hcp';
 export * from './count-suit';
 export * from './distribution';
 export * from './exact-distribution';
+export * from './format-as-lines';
 export * from './remove-card';
+export * from './filter-suit';
 export * from './sort';
