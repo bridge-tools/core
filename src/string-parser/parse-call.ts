@@ -35,7 +35,7 @@ export function parseCall(bid: string): AuctionCall {
 	const level = Number.parseInt(bid);
 	const strain = bid.slice(1);
 	if (level > 0 && level <= LARGEST_BID_LEVEL) {
-		return { call: { level: level, suit: parseStrain(strain) } };
+		return { call: { level, suit: parseStrain(strain) } };
 	} else {
 		throw new Error(`Failed to parse Call with string: ${bid}`);
 	}

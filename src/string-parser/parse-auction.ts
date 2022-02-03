@@ -10,7 +10,7 @@ function parseContestedAuction(auction: string): AuctionCall[] {
 	return calls.map((call) => parseCall(call));
 }
 /**
- * Converts an uncontested auction into a full contested auction.
+ * Converts an uncontested auction into a full contested auction, with a single terminating pass
  * @param auction String of calls in auction separated by -
  * @returns List of AuctionCalls representing the auction
  */

@@ -4,7 +4,7 @@ import { PossibleCalls } from '../../src/types';
 
 const stringContestedAuction =
 	'1S-2D-3D-P-5C-P-5D-P-5NT-P-6H-P-7S-X-P-P-XX-P-P-P';
-const stringUncontestedAuction = '1H-P-2C-P-2H-P-2NT-P-3C-P-3NT';
+const stringUncontestedAuction = '1H-2C-2H-2NT-3C-3NT';
 
 const listContestedAuction = [
 	{ call: { level: 1, suit: Types.Suit.Spade } },
@@ -30,12 +30,28 @@ const listContestedAuction = [
 ];
 const listUncontestedAuction = [
 	{ call: { level: 1, suit: Types.Suit.Heart } },
+	{ call: PossibleCalls.Pass },
+	{ call: { level: 2, suit: Types.Suit.Club } },
+	{ call: PossibleCalls.Pass },
+	{ call: { level: 2, suit: Types.Suit.Heart } },
+	{ call: PossibleCalls.Pass },
+	{ call: { level: 2, suit: Types.NoTrump } },
+	{ call: PossibleCalls.Pass },
+	{ call: { level: 3, suit: Types.Suit.Club } },
+	{ call: PossibleCalls.Pass },
+	{ call: { level: 3, suit: Types.NoTrump } },
+	{ call: PossibleCalls.Pass },
+];
+
+const invalidUncontestedAuction = [
+	{ call: { level: 1, suit: Types.Suit.Heart } },
 	{ call: { level: 2, suit: Types.Suit.Club } },
 	{ call: { level: 2, suit: Types.Suit.Heart } },
 	{ call: { level: 2, suit: Types.NoTrump } },
 	{ call: { level: 3, suit: Types.Suit.Club } },
 	{ call: { level: 3, suit: Types.NoTrump } },
 ];
+
 describe('Testing StringParser.stringifyAuction', () => {
 	it('Testing contested auction', () => {
 		expect(stringifyAuction(listContestedAuction)).toStrictEqual(
@@ -46,5 +62,8 @@ describe('Testing StringParser.stringifyAuction', () => {
 		expect(stringifyAuction(listUncontestedAuction, false)).toStrictEqual(
 			stringUncontestedAuction
 		);
+		expect(() =>
+			stringifyAuction(invalidUncontestedAuction, false)
+		).toThrowError();
 	});
 });
