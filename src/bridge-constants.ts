@@ -13,3 +13,5 @@ export const CARDS_IN_TRICK = 4;
 export const COMPASS_DIRECTIONS = 4;
 
 export const VULNERABILITIES = 16;
+
+export const LARGEST_BID_LEVEL = 7;
