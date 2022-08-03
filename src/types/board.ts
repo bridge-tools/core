@@ -24,7 +24,7 @@ export interface FullBoard extends BasicBoard {
 
 	auction: AuctionCall[];
 
-	contract: Contract;
+	contract: Contract | null;
 	remainingCards: Deal;
 	trick: Trick;
 	play: Trick[];
@@ -33,7 +33,7 @@ export interface FullBoard extends BasicBoard {
 	tricksNS: number;
 	tricksEW: number;
 
-	players: Partial<Record<Compass, Player>>;
+	players: Record<Compass, Player>;
 
-	result: BoardResult;
+	result: BoardResult | null;
 }
