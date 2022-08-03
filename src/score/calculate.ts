@@ -124,7 +124,7 @@ function calculateOvertrickScore(
 	}
 
 	score += trickScore;
-	if (trickScore > GAME_THRESHOLD) {
+	if (trickScore >= GAME_THRESHOLD) {
 		score += vulnerable ? V_GAME_BONUS : NV_GAME_BONUS;
 	}
 

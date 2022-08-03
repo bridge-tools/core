@@ -37,6 +37,20 @@ describe('Testing Score.calculate specific contracts', () => {
 		).toStrictEqual({ result: 0, tricksTaken: 7, score: 90 });
 	});
 
+	it('Testing N 3N= NV', () => {
+		expect(
+			Score.calculate(
+				{
+					level: 3,
+					strain: Types.NoTrump,
+					declarer: Types.Compass.North,
+				},
+				Types.Vulnerability.NvNv,
+				9
+			)
+		).toStrictEqual({ result: 0, tricksTaken: 9, score: 400 });
+	});
+
 	it('Testing E 3mx+2 NV', () => {
 		expect(
 			Score.calculate(
